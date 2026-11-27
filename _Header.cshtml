@@ -1,0 +1,84 @@
+﻿<header class="client-header">
+    <div class="top-header">
+        <div class="header-inner">
+
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="spa-logo">
+                S&J SPA
+            </a>
+
+            <form asp-controller="DichVu"
+                  asp-action="Index"
+                  method="get"
+                  class="search-box">
+                <span>⌕</span>
+                <input type="text"
+                       name="keyword"
+                       placeholder="Tìm kiếm dịch vụ..." />
+
+
+            </form>
+
+            <div class="header-right">
+                <span>HOTLINE: 1900 2345</span>
+                <partial name="_LoginPartial" />
+            </div>
+
+        </div>
+    </div>
+
+
+    <nav class="client-nav">
+        <a asp-controller="Home"
+           asp-action="Index">
+            Trang chủ
+        </a>
+
+        <a asp-controller="DatLich"
+           asp-action="Index">
+            Đặt lịch
+        </a>
+
+        <a asp-controller="DichVu"
+           asp-action="Index">
+            Các gói dịch vụ
+        </a>
+
+        @if (User.Identity?.IsAuthenticated == true && User.IsInRole("Admin"))
+        {
+            <div class="admin-menu">
+                <a href="#" class="admin-menu-title">
+                    Quản trị ▾
+                </a>
+
+                <div class="admin-dropdown">
+                    <a asp-area="Admin"
+                       asp-controller="DichVus"
+                       asp-action="Index">
+                        Quản lý dịch vụ
+                    </a>
+
+                    <a asp-area="Admin"
+                       asp-controller="DatLichs"
+                       asp-action="Index">
+                        Quản lý lịch hẹn
+                    </a>
+
+                    <a asp-area="Admin"
+                       asp-controller="KhuyenMais"
+                       asp-action="Index">
+                        Quản lý khuyến mãi
+                    </a>
+
+                    <a asp-area="Admin"
+                       asp-controller="LienHes"
+                       asp-action="Index">
+                        Quản lý liên hệ
+                    </a>
+                </div>
+            </div>
+        }
+    </nav>
+
+</header>
